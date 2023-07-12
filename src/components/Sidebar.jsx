@@ -1,9 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-// import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-// import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
@@ -15,8 +12,10 @@ import Toolbar from "@mui/material/Toolbar";
 import { Tooltip } from "@mui/material";
 import HomeTwoToneIcon from "@mui/icons-material/HomeTwoTone";
 import FavoriteTwoToneIcon from "@mui/icons-material/FavoriteTwoTone";
+import AddLocationTwoToneIcon from "@mui/icons-material/AddLocationTwoTone";
+import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
+import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
 import { Routes, Route, HashRouter } from "react-router-dom";
-import { Link, useNavigate } from "react-router-dom";
 
 import logo from "../assets/tornado.png";
 import Home from "./Home";
@@ -24,8 +23,7 @@ import Favourite from "./Favourite";
 
 const drawerWidth = 70;
 
-function Sidebar(props) {
-  const { window } = props;
+function Sidebar({ setQuery }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -56,43 +54,102 @@ function Sidebar(props) {
       </div>
 
       <List>
-        {["Home page", "Favourite"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  //   backgroundColor: "cyan",
-                }}
-              >
-                <Tooltip title={text} placement="right">
-                  {index % 2 === 0 ? (
-                    <Link to="/">
-                      <HomeTwoToneIcon
-                        sx={{ fontSize: "30px", color: "var(--lightBlue)" }}
-                      />
-                    </Link>
-                  ) : (
-                    <Link to="/Favourite">
-                      <FavoriteTwoToneIcon
-                        sx={{ fontSize: "30px", color: "var(--lightRed)" }}
-                      />
-                    </Link>
-                  )}
-                </Tooltip>
-              </ListItemIcon>
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem
+          key={"text"}
+          disablePadding
+          sx={{ display: "flex", flexDirection: "column", gap: "20px" }}
+        >
+          <ListItemButton>
+            <ListItemIcon
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Tooltip title={"text"} placement="right">
+                <HomeTwoToneIcon
+                  sx={{
+                    fontSize: "30px",
+                    color: "var(--lightBlue)",
+                  }}
+                />
+              </Tooltip>
+            </ListItemIcon>
+          </ListItemButton>
+
+          <ListItemButton>
+            <ListItemIcon
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Tooltip title={"text"} placement="right">
+                <FavoriteTwoToneIcon
+                  sx={{ fontSize: "30px", color: "var(--lightBlue)" }}
+                />
+              </Tooltip>
+            </ListItemIcon>
+          </ListItemButton>
+
+          <ListItemButton>
+            <ListItemIcon
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Tooltip title={"text"} placement="right">
+                <AddLocationTwoToneIcon
+                  sx={{ fontSize: "30px", color: "var(--lightBlue)" }}
+                />
+              </Tooltip>
+            </ListItemIcon>
+          </ListItemButton>
+
+          <ListItemButton>
+            <ListItemIcon
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Tooltip title={"text"} placement="right">
+                <CalendarMonthTwoToneIcon
+                  sx={{ fontSize: "30px", color: "var(--lightBlue)" }}
+                />
+              </Tooltip>
+            </ListItemIcon>
+          </ListItemButton>
+
+          <ListItemButton>
+            <ListItemIcon
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Tooltip title={"text"} placement="right">
+                <SettingsTwoToneIcon
+                  sx={{ fontSize: "30px", color: "var(--lightBlue)" }}
+                />
+              </Tooltip>
+            </ListItemIcon>
+          </ListItemButton>
+        </ListItem>
       </List>
     </div>
   );
-
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box
@@ -101,11 +158,7 @@ function Sidebar(props) {
       }}
     >
       <HashRouter>
-        {/* <CssBaseline /> */}
-        {/* handburger icon for mobile */}
-        <Toolbar
-        // sx={{ backgroundColor: "red" }}
-        >
+        <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -133,13 +186,12 @@ function Sidebar(props) {
             open={mobileOpen}
             onClose={handleDrawerToggle}
             ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
+              keepMounted: true,
             }}
             sx={{
               display: { xs: "block", sm: "none" },
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
-                // width: drawerWidth,
               },
             }}
           >
@@ -152,7 +204,6 @@ function Sidebar(props) {
               display: { xs: "none", sm: "block" },
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
-                // width: drawerWidth,
                 border: "none",
               },
             }}
@@ -167,14 +218,11 @@ function Sidebar(props) {
           sx={{
             m: 0,
             flexGrow: 1,
-            pt: 2,
-            // width: "100%",
-            // backgroundColor: "red",
           }}
         >
           <Routes>
             <Route path="/">
-              <Route index element={<Home />} />
+              <Route index element={<Home setQuery={setQuery} />} />
               <Route path="Favourite" element={<Favourite />} />
             </Route>
           </Routes>
@@ -185,10 +233,6 @@ function Sidebar(props) {
 }
 
 Sidebar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 

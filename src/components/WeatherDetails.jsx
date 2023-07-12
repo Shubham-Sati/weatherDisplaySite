@@ -1,21 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import AvatarImg from "../assets/avatar.jpeg";
 import Avatar from "@mui/material/Avatar";
 import { IconButton, TextField, Typography } from "@mui/material";
 import SearchTwoToneIcon from "@mui/icons-material/SearchTwoTone";
 import CircleNotificationsOutlinedIcon from "@mui/icons-material/CircleNotificationsOutlined";
+import { Tooltip } from "@mui/material";
 import CardDetail from "./CardDetail";
 import HourlyForcast from "./HourlyForcast";
 import TomorrowForcast from "./TomorrowForcast";
+import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
+import { useSelector } from "react-redux";
 
-const WeatherDetails = () => {
+const WeatherDetails = ({ setQuery }) => {
+  const [input, setInput] = useState();
+  // const { weatherData } = useSelector((state) => state.weatherData);
+
+  const handleClick = () => {
+    if (input === "") return;
+
+    setQuery(input);
+  };
+
+  // const handleAddToFavrouite = () => {
+
+  // };
+
   return (
     <div
       style={{
         flexGrow: 1,
         paddingRight: "40px",
-        // backgroundColor: "cyan"
+        paddingTop: "20px",
       }}
     >
       {/* Header */}
@@ -29,7 +45,6 @@ const WeatherDetails = () => {
           alignItems: "center",
         }}
       >
-        {/* header */}
         <Box
           sx={{
             display: {
@@ -56,23 +71,35 @@ const WeatherDetails = () => {
             gap: "20px",
           }}
         >
+          {/* Add to Favroite Icon*/}
+          {/* <Tooltip title={"Add to Favrouite"} placement="bottom">
+            <FavoriteRoundedIcon
+              sx={{
+                fontSize: "30px",
+                color: "var(--lightRed)",
+                transition: "transform 330ms ease-in-out",
+                "&:hover": {
+                  color: "var(--lightBlue)",
+                  transform: "scale(1.5)",
+                },
+              }}
+              onClick={handleAddToFavrouite}
+            />
+          </Tooltip> */}
+
           {/* search */}
           <TextField
             type="text"
             label="Search anything..."
             size="small"
-            // sx={{
-            //   "& .MuiInputBase-root": {
-            //     borderRadius: 40, // Adjust the value to set the desired border radius
-            //   },
-            // }}
+            onChange={(e) => setInput({ q: e.target.value })}
             InputProps={{
               style: {
                 borderRadius: "12px",
                 backgroundColor: "var(--lightWhite)",
               },
               endAdornment: (
-                <IconButton>
+                <IconButton onClick={handleClick}>
                   <SearchTwoToneIcon
                     sx={{
                       color: "var(--orange)",
@@ -99,18 +126,14 @@ const WeatherDetails = () => {
         sx={{
           pt: 4,
           display: "flex",
-          // backgroundColor: "red",
-
           flexDirection: {
             xs: "column",
             sm: "row",
           },
-
           justifyContent: {
             xs: "center",
             sm: "space-between",
           },
-
           alignItem: {
             xs: "center",
           },

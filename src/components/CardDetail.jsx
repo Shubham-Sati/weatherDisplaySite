@@ -31,9 +31,8 @@ const CardDetail = ({ name }) => {
   return (
     <Card
       sx={{
-        width: { xs: 250, sm: 350, lg: 395 },
+        width: { xs: 250, sm: 360, lg: 375 },
         height: 300,
-        // maxWidth: 345,
         borderRadius: "30px",
         position: "relative",
       }}
@@ -53,8 +52,6 @@ const CardDetail = ({ name }) => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-evenly",
-
-          // backgroundColor: "red",
           color: name === "weather" ? "var(--black)" : "var(--white)",
           p: 0,
         }}
@@ -72,7 +69,7 @@ const CardDetail = ({ name }) => {
           <Typography sx={{ fontSize: "14px" }}>
             {name === "weather"
               ? "What's the Weather"
-              : `Main Polution : PM ${Number(weatherData.pm).toFixed(2)}`}
+              : `Main Polution : PM ${Number(weatherData?.pm).toFixed(2)}`}
           </Typography>
         </Box>
 
@@ -96,7 +93,6 @@ const CardDetail = ({ name }) => {
 
                 backgroundColor:
                   name === "weather" ? "var(--white)" : "var(--lightGreen)",
-                // backgroundColor: "var(--white)",
                 fontSize: "12px",
                 fontWeight: "bold",
 
@@ -108,7 +104,7 @@ const CardDetail = ({ name }) => {
           </Typography>
 
           <Typography sx={{ fontWeight: "bold", fontSize: "14px" }}>
-            {name === "weather" ? weatherData.text : weatherData.wind_dir}
+            {name === "weather" ? weatherData?.text : weatherData?.wind_dir}
           </Typography>
         </Box>
 
@@ -136,7 +132,7 @@ const CardDetail = ({ name }) => {
                 Pressure
               </Typography>
               <Typography variant="body2" sx={{ fontSize: "20px" }}>
-                {weatherData.pressure_mb} mb
+                {weatherData?.pressure_mb} mb
               </Typography>
             </Box>
 
@@ -155,7 +151,7 @@ const CardDetail = ({ name }) => {
                 Visibility
               </Typography>
               <Typography variant="body2" sx={{ fontSize: "20px" }}>
-                {weatherData.vis_km} km
+                {weatherData?.vis_km} km
               </Typography>
             </Box>
 
@@ -174,7 +170,7 @@ const CardDetail = ({ name }) => {
                 Humadity
               </Typography>
               <Typography variant="body2" sx={{ fontSize: "20px" }}>
-                {weatherData.humidity}%
+                {weatherData?.humidity}%
               </Typography>
             </Box>
           </Box>
@@ -202,13 +198,12 @@ const CardDetail = ({ name }) => {
               }}
             >
               <Box>Good</Box>
-              {/* <Box sx={{ padding: "0px", margin: "0px" }}>Standard</Box> */}
               <Box>Hazardous</Box>
             </Box>
 
             <BorderLinearProgress
               variant="determinate"
-              value={Math.round(weatherData.feelslike_c)}
+              value={Math.round(weatherData?.feelslike_c)}
             />
           </Box>
         )}

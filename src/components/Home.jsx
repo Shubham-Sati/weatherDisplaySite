@@ -4,27 +4,15 @@ import WeatherDetails from "./WeatherDetails";
 import WeatherPrediction from "./WeatherPrediction";
 import Box from "@mui/material/Box";
 
-const Home = () => {
+const Home = ({ setQuery }) => {
   return (
     <Box
-      style={{
-        // backgroundColor: "red",
-        // display: { xs: "none", sm: "flex" },
+      sx={{
         display: "flex",
-        // flexDirection: {
-        //   xs: "column",
-        //   sm: "row",
-        // },
       }}
     >
-      {/* <Box
-        sx={{
-          display: "flex",
-        }}
-      > */}
-        <WeatherDetails />
-        <WeatherPrediction />
-      {/* </Box> */}
+      <WeatherDetails setQuery={setQuery} />
+      <WeatherPrediction />
     </Box>
   );
 };

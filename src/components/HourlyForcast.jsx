@@ -31,8 +31,6 @@ const HourlyForcast = () => {
       sx={{
         width: { md: 500 },
         height: 300,
-        // maxWidth: 345,
-        // borderRadius: "30px",
         position: "relative",
       }}
     >
@@ -125,7 +123,6 @@ const HourlyForcast = () => {
               width: 3,
               curve: "smooth",
               colors: "var(--orange)",
-              // lineCap: 'butt'
             },
             xaxis: {
               show: false,
