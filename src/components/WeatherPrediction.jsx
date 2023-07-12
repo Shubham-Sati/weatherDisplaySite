@@ -12,6 +12,25 @@ import LightModeTwoToneIcon from "@mui/icons-material/LightModeTwoTone";
 
 const WeatherPrediction = () => {
   const { weatherData } = useSelector((state) => state.weatherData);
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth();
+
+  console.log(weatherData);
 
   return (
     <Box
@@ -35,10 +54,10 @@ const WeatherPrediction = () => {
           }}
         >
           <Typography sx={{ fontSize: "18px", fontWeight: "bold" }}>
-            {weatherData.name},{" "}
+            {weatherData?.name},
           </Typography>
           <Typography sx={{ fontSize: "18px", fontWeight: "bold" }}>
-            {weatherData.region}
+            {weatherData?.region}
           </Typography>
         </div>
         <div>
@@ -49,7 +68,7 @@ const WeatherPrediction = () => {
               fontWeight: "bold",
             }}
           >
-            {weatherData.temp_c}
+            {weatherData?.temp_c}
           </Typography>
         </div>
       </Box>
@@ -80,7 +99,7 @@ const WeatherPrediction = () => {
               }}
             />
             <Typography gutterBottom sx={{}} color="var(--darkBlue)">
-              {weatherData.sunrise}
+              {weatherData?.sunrise}
             </Typography>
           </Box>
           <Box style={{ display: "flex", alignItems: "center" }}>
@@ -92,7 +111,7 @@ const WeatherPrediction = () => {
               }}
             />
             <Typography sx={{ gap: 10 }} color="var(--darkBlue)">
-              {weatherData.sunset}
+              {weatherData?.sunset}
             </Typography>
           </Box>
         </CardContent>
@@ -124,7 +143,7 @@ const WeatherPrediction = () => {
               }}
             >
               <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
-                {weatherData.uv} UVI
+                {weatherData?.uv} UVI
               </Typography>
               <Box
                 sx={{
@@ -184,15 +203,19 @@ const WeatherPrediction = () => {
             />
 
             <Box>
-              <Typography sx={{ fontSize: "14px" }}>November 10</Typography>
+              <Typography sx={{ fontSize: "14px" }}>
+                {`
+                  ${monthNames[month]} ${day + 1}
+                  `}
+              </Typography>
               <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
-                Cloudy
+                {`${weatherData.text}`}
               </Typography>
             </Box>
           </Box>
 
           <Box sx={{ color: "var(--orange)", fontWeight: "bold" }}>
-            26* / 198*
+            {`${weatherData.low} / ${weatherData.low_f}`}
           </Box>
         </CardContent>
       </Card>
@@ -223,15 +246,17 @@ const WeatherPrediction = () => {
             />
 
             <Box>
-              <Typography sx={{ fontSize: "14px" }}>November 11</Typography>
+              <Typography sx={{ fontSize: "14px" }}>{`
+                  ${monthNames[month]} ${day + 2}
+                  `}</Typography>
               <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
-                Rainy
+                {`${weatherData.text}`}
               </Typography>
             </Box>
           </Box>
 
           <Box sx={{ color: "var(--orange)", fontWeight: "bold" }}>
-            26* / 198
+            {`${weatherData.high} / ${weatherData.high_f}`}
           </Box>
         </CardContent>
       </Card>
