@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from "@mui/material";
 import WeatherDetails from "./WeatherDetails";
 import WeatherPrediction from "./WeatherPrediction";
 import Box from "@mui/material/Box";

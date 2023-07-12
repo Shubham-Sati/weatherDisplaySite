@@ -5,12 +5,9 @@ import Avatar from "@mui/material/Avatar";
 import { IconButton, TextField, Typography } from "@mui/material";
 import SearchTwoToneIcon from "@mui/icons-material/SearchTwoTone";
 import CircleNotificationsOutlinedIcon from "@mui/icons-material/CircleNotificationsOutlined";
-import { Tooltip } from "@mui/material";
 import CardDetail from "./CardDetail";
 import HourlyForcast from "./HourlyForcast";
 import TomorrowForcast from "./TomorrowForcast";
-import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
-import { useSelector } from "react-redux";
 
 const WeatherDetails = ({ setQuery }) => {
   const [input, setInput] = useState();

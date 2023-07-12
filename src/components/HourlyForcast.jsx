@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import leaf from "../assets/leaf.jpeg";
 import { Typography, Box } from "@mui/material";
 import { useSelector } from "react-redux";
 import Chart from "react-apexcharts";

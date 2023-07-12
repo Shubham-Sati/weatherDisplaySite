@@ -7,7 +7,7 @@ import {
   addWeatherDataFailure,
   addWeatherDataClearError,
 } from "./redux/reducers/weatherSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Sidebar from "./components/Sidebar";
 import Loader from "./components/Loader";
 
@@ -75,7 +75,7 @@ function App() {
     };
 
     fetchWeather();
-  }, [query]);
+  }, [query, aqi]);
 
   return (
     <div className="App">
