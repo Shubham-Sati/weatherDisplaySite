@@ -18,6 +18,8 @@ function App() {
   const [weather, setWeather] = useState(null);
   const [fetchingLocation, setFetchingLocation] = useState(false);
 
+  console.log(weather, setAqi);
+
   useEffect(() => {
     if (navigator.geolocation) {
       setFetchingLocation(true);
