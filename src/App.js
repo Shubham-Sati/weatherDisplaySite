@@ -14,11 +14,11 @@ import Loader from "./components/Loader";
 function App() {
   const dispatch = useDispatch();
   const [query, setQuery] = useState({ q: "dehradun" });
-  const [aqi, setAqi] = useState({ aqi: "yes" });
+  const [aqi] = useState({ aqi: "yes" });
   const [weather, setWeather] = useState(null);
   const [fetchingLocation, setFetchingLocation] = useState(false);
 
-  console.log(weather, setAqi);
+  console.log(weather);
 
   useEffect(() => {
     if (navigator.geolocation) {

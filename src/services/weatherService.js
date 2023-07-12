@@ -2,11 +2,12 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const getWeatherData = (infoType, searchParams) => {
-
   const url = new URL(BASE_URL + "/" + infoType);
   url.search = new URLSearchParams({ key: API_KEY, ...searchParams });
 
-  return fetch(url).then((res) => res.json());
+  return fetch(url)
+    .then((res) => res.json())
+    .catch((error) => console.log(error));
 };
 
 const formatCurrentWeather = (data) => {
