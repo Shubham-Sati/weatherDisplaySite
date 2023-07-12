@@ -209,13 +209,13 @@ const WeatherPrediction = () => {
                   `}
               </Typography>
               <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
-                {`${weatherData.text}`}
+                {`${weatherData?.text}`}
               </Typography>
             </Box>
           </Box>
 
           <Box sx={{ color: "var(--orange)", fontWeight: "bold" }}>
-            {`${weatherData.low} / ${weatherData.low_f}`}
+            {`${weatherData?.low} / ${weatherData?.low_f}`}
           </Box>
         </CardContent>
       </Card>
@@ -250,13 +250,13 @@ const WeatherPrediction = () => {
                   ${monthNames[month]} ${day + 2}
                   `}</Typography>
               <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
-                {`${weatherData.text}`}
+                {`${weatherData?.text}`}
               </Typography>
             </Box>
           </Box>
 
           <Box sx={{ color: "var(--orange)", fontWeight: "bold" }}>
-            {`${weatherData.high} / ${weatherData.high_f}`}
+            {`${weatherData?.high} / ${weatherData?.high_f}`}
           </Box>
         </CardContent>
       </Card>
