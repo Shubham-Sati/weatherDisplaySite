@@ -75,7 +75,7 @@ function App() {
     };
 
     fetchWeather();
-  }, [query, aqi]);
+  }, [query, aqi, dispatch]);
 
   return (
     <div className="App">
